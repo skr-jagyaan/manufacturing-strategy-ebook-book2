@@ -586,7 +586,7 @@ function renderScreen(screen, idx, total) {
             <div class="end-check">↓</div>
             <div class="end-title">The Workbook</div>
             <div class="prose" style="margin-bottom:32px;">
-              <p>${screen.body.replace(/\n/g, '</p><p>')}</p>
+              <p>${(screen.body || "Download your Book Two workbook — a structured set of exercises to apply every strategic framework from this book to your own manufacturing business.").replace(/\n/g, '</p><p>')}</p>
             </div>
             <a href="/workbook.pdf" download id="workbook-download-btn" class="btn btn-primary" style="width:100%;justify-content:center;padding:13px;text-decoration:none;" onclick="markWorkbookDownloaded()">
               Download Workbook →
