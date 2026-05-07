@@ -5,7 +5,7 @@
    ============================================================ */
 
 // ── CONSTANTS ──
-const RAILWAY_URL = 'BOOK2_CLOUD_RUN_URL_PLACEHOLDER';
+const RAILWAY_URL = 'https://manufacturing-book2-65462349033.asia-south1.run.app';
 const SHELF_URL   = 'https://manufacturing-shelf-65462349033.asia-south1.run.app'; // Redirect here if no valid session
 const TOTAL_CHAPTERS = 9;
 
