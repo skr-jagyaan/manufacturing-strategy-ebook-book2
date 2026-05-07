@@ -250,7 +250,7 @@ async function loadOnboarding(startScreen = 0) {
       history.pushState({}, '', '/read');
     }
 
-    document.getElementById('bar-book').textContent = 'Why Great Manufacturers Stay Invisible';
+    document.getElementById('bar-book').textContent = 'Stop Planning, Start Winning';
     document.getElementById('bar-sep').style.display = 'none';
     document.getElementById('bar-ch').textContent = '';
     document.getElementById('bar-shelf-btn').style.display = 'inline-flex';
@@ -288,7 +288,7 @@ async function loadBackmatter() {
 
     document.getElementById('bar-book').textContent = 'Book Two';
     document.getElementById('bar-sep').style.display = '';
-    document.getElementById('bar-ch').textContent = 'Why Great Manufacturers Stay Invisible';
+    document.getElementById('bar-ch').textContent = 'Stop Planning, Start Winning';
     document.getElementById('bar-shelf-btn').style.display = 'inline-flex';
 
     buildScreens(currentChapter.screens);
@@ -721,8 +721,8 @@ function renderOnboardingScreen(screen, idx, total, prevBtn) {
         <div class="screen-body center">
           <div class="cover-wrap">
             <div class="cover-series">The Manufacturing Strategy Series · Book Two of Four</div>
-            <div class="cover-title">Why Great Manufacturers Stay Invisible</div>
-            <div class="cover-subtitle">How to Turn a Good Manufacturing Business into a Recognised Brand</div>
+            <div class="cover-title">Stop Planning, Start Winning</div>
+            <div class="cover-subtitle">Making Strategic Choices Competitors Can't Copy</div>
             <div class="cover-rule"></div>
             <div class="cover-author">Sudharsan K R</div>
             <div class="cover-role">Business Model &amp; Strategy Advisor</div>
@@ -738,8 +738,8 @@ function renderOnboardingScreen(screen, idx, total, prevBtn) {
       return `
         <div class="screen-body">
           <div class="copy-wrap">
-            <div class="copy-title">Why Great Manufacturers Stay Invisible</div>
-            <div class="copy-sub">How to Turn a Good Manufacturing Business into a Recognised Brand</div>
+            <div class="copy-title">Stop Planning, Start Winning</div>
+            <div class="copy-sub">Making Strategic Choices Competitors Can't Copy</div>
             <div class="copy-rule"></div>
             <p class="copy-p">Copyright © 2026 by Sudharsan K R</p>
             <p class="copy-p">All rights reserved. No part of this publication may be reproduced, distributed, or transmitted in any form or by any means — including photocopying, recording, or other electronic or mechanical methods — without the prior written permission of the author, except in the case of brief quotations embodied in critical reviews and certain other non-commercial uses permitted by copyright law.</p>
@@ -1124,7 +1124,7 @@ async function submitBookTakeaways(nextScreenIdx) {
         userRev:      user.rev,
         userSector:   user.sector,
         chapter:      'book',
-        chapterTitle: 'Why Great Manufacturers Stay Invisible — Full Book',
+        chapterTitle: 'Stop Planning, Start Winning — Full Book',
         takeaways:    [t1, t2, t3],
         isBookLevel:  true
       })
