@@ -624,7 +624,9 @@ function renderScreen(screen, idx, total) {
     case 'toc':
     case 'preface':
     case 'whoshouldread':
+    case 'who':
     case 'introduction':
+    case 'intro':
     case 'about':
     case 'form':
     case 'vikram':
@@ -754,11 +756,17 @@ function renderOnboardingScreen(screen, idx, total, prevBtn) {
         </div>`;
 
     case 'toc': {
+      const tocRows = (screen.items || []).map(item => {
+        if (item.isSection) {
+          return `<div class="toc-section">${item.title}</div>`;
+        }
+        return `<div class="toc-row"><span class="toc-label">${item.label}</span><span class="toc-title">${item.title}</span></div>`;
+      }).join('');
       return `
         <div class="screen-body">
           <div class="toc-wrap">
             <div class="toc-heading">Contents</div>
-            ${screen.body}
+            ${tocRows}
           </div>
         </div>
         <div class="screen-footer">
@@ -770,7 +778,9 @@ function renderOnboardingScreen(screen, idx, total, prevBtn) {
 
     case 'preface':
     case 'whoshouldread':
+    case 'who':
     case 'introduction':
+    case 'intro':
       return `
         <div class="screen-body">
           <div class="prose-wrap">
