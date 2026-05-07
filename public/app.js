@@ -198,7 +198,7 @@ async function loadChapter(num) {
 
   try {
     // Dynamically import the chapter module
-    const module = await import(`/chapters/ch${num}.js`);
+    const module = await import(`/chapters/ch${num}.js?v=2`);
     currentChapter = module.default;
 
     // Update bar
@@ -242,7 +242,7 @@ async function loadChapter(num) {
 async function loadOnboarding(startScreen = 0) {
   showLoader();
   try {
-    const module = await import('/onboarding/onboarding.js');
+    const module = await import('/onboarding/onboarding.js?v=2');
     currentChapter = module.default;
 
     // Push state so browser back doesn't trigger route() back to shelf
@@ -283,7 +283,7 @@ async function loadOnboarding(startScreen = 0) {
 async function loadBackmatter() {
   showLoader();
   try {
-    const module = await import('/chapters/backmatter.js');
+    const module = await import('/chapters/backmatter.js?v=2');
     currentChapter = module.default;
 
     document.getElementById('bar-book').textContent = 'Book Two';
@@ -307,7 +307,7 @@ async function loadBackmatter() {
 async function loadDiagnosis() {
   showLoader();
   try {
-    const module = await import('/chapters/diagnosis.js');
+    const module = await import('/chapters/diagnosis.js?v=2');
     const diag = module.default;
 
     document.getElementById('bar-book').textContent = 'Book Two';
