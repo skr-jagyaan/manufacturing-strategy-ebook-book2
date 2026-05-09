@@ -629,6 +629,7 @@ function renderScreen(screen, idx, total) {
     case 'intro':
     case 'about':
     case 'form':
+    case 'companion':
     case 'vikram':
       return renderOnboardingScreen(screen, idx, total, prevBtn);
 
@@ -849,6 +850,7 @@ function renderOnboardingScreen(screen, idx, total, prevBtn) {
           <button class="btn btn-primary" onclick="submitForm(${idx})">Meet Your Reading Companion →</button>
         </div>`;
 
+    case 'companion':
     case 'vikram':
       return `
         <div class="screen-body center">
@@ -931,7 +933,7 @@ function go(from, to) {
       setTimeout(loadDiagnosisData, 600);
     }
     // If vikram screen, trigger typewriter
-    if (screens[to]?.type === 'vikram') {
+    if (screens[to]?.type === 'vikram' || screens[to]?.type === 'companion') {
       setTimeout(typeVikramIntro, 300);
     }
     // If vikram closing screen, trigger typewriter
@@ -1119,7 +1121,11 @@ async function submitBookTakeaways(nextScreenIdx) {
   document.getElementById('loading-state').classList.add('show');
 
   const user = getUser();
-  let perspectives = currentChapter.vikramPerspectives;
+  let perspectives = currentChapter.vikramPerspectives || [
+    '<strong>Strategy is a choice, not a plan.</strong> The single most important insight from this book is that trade-offs are where strategy becomes real.',
+    '<strong>Where to Play is the hardest decision.</strong> Most businesses never make it — they serve everyone and win nothing.',
+    '<strong>The cascade works when every level reinforces the one below it.</strong> If your management systems measure the wrong things, your capabilities erode and your How to Win collapses.'
+  ];
 
   try {
     const controller = new AbortController();
@@ -1128,7 +1134,7 @@ async function submitBookTakeaways(nextScreenIdx) {
     const res = await fetch(RAILWAY_URL + '/api/agent', {
       method: 'POST',
       signal: controller.signal,
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', 'x-reader-email': localStorage.getItem('readerEmail') || '', 'x-reader-token': localStorage.getItem('readerToken') || '' },
       body: JSON.stringify({
         userName:     user.name,
         userRev:      user.rev,
@@ -1208,7 +1214,11 @@ async function submitTakeaways(nextScreenIdx) {
   document.getElementById('loading-state').classList.add('show');
 
   const user = getUser();
-  let perspectives = currentChapter.vikramPerspectives;
+  let perspectives = currentChapter.vikramPerspectives || [
+    '<strong>Strategy is a choice, not a plan.</strong> The single most important insight from this book is that trade-offs are where strategy becomes real.',
+    '<strong>Where to Play is the hardest decision.</strong> Most businesses never make it — they serve everyone and win nothing.',
+    '<strong>The cascade works when every level reinforces the one below it.</strong> If your management systems measure the wrong things, your capabilities erode and your How to Win collapses.'
+  ];
 
   try {
     const controller = new AbortController();
